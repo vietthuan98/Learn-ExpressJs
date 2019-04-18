@@ -1,0 +1,17 @@
+extends ../layouts/common.pug
+
+block content
+	h2 Create new member
+	if errors
+		each error in errors
+			.alert.alert-danger= error
+
+	form(action='/user/create', method='POST')
+		.form-group
+			label(for='name') Name
+			input.form-control(type='text', name='name' id='name' value=values ? values.name : '') 
+		.form-group
+			label(for='phone') Phone
+			input.form-control(type='text', name='phone' id='Phone' value=values ? values.phone : '') 
+		button.btn.btn-primary.ml-2 Create
+	
