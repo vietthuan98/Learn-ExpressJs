@@ -21,7 +21,8 @@ module.exports.search = function(req, res) {
 };
 
 module.exports.create = function(req, res) {
-	res.render('user/create.pug')
+	console.log(req.cookies);
+	res.render('user/create.pug');
 };
 
 
