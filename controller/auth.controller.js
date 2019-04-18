@@ -1,4 +1,6 @@
-const db = require('../lowdb.js')
+const md5 = require('md5');
+
+const db = require('../lowdb.js');
 
 module.exports.login = function(req ,res, next) {
 	res.render('auth/login.pug')
@@ -18,7 +20,9 @@ module.exports.postLogin = function(req, res, next) {
 		return;
 	}
 
-	if(user.password !== password) {
+	var hashedPassword = md5(password);
+	console.log(hashedPassword);
+	if(user.password !== hashedPassword) {
 		res.render('auth/login.pug', {
 			errors: ['Wrong password.'],
 			values: req.body
